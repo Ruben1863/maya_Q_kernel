@@ -1652,7 +1652,7 @@
 	};
 };
 
-#include <trusty.dtsi>
+#include <maya_bsp/trusty.dtsi>
 
 &eintc {
 	pmic@13 {
