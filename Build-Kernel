@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ ! -d gcc ]]; then
+git clone https://github.com/Ruben1863/android_gcc_6.4.1_arm-eabi gcc
+fi
+mkdir -p out
+export KBUILD_BUILD_USER=RuBeN1863
+export KBUILD_BUILD_HOST=Q_Kernel
+export CROSS_COMPILE=${PWD}/gcc/bin/arm-eabi-
+export ARCH=arm
+export SUBARCH=arm
+export TARGET=out
+make O=$TARGET ARCH=$ARCH CROSS_COMPILE=$CROSS_COMPILE maya_bsp_defconfig | tee -a Defconfig.log
+make O=$TARGET ARCH=$ARCH CROSS_COMPILE=$CROSS_COMPILE -j6 | tee -a Kernel.log
