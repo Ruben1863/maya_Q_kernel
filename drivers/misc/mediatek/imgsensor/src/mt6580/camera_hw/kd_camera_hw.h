@@ -87,6 +87,10 @@ typedef enum {
 	CAM1PDN,
 	CAM1RST,
 	CAMLDO
+/* Vanzo:yuntaohe on: Mon, 21 Dec 2015 21:58:45 +0800 */
+	CAMLDO1,
+        VCMPND
+// End of Vanzo:yuntaohe
 } CAMPowerType;
 
 extern void ISP_MCLK1_EN(BOOL En);
