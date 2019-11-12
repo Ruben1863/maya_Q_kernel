@@ -544,5 +544,5 @@
 };
 /* CONSYS end */
 
-#include "cust.dtsi"
+#include "maya_bsp/cust.dtsi"
 /*End of this file, DO NOT ADD ANYTHING HERE*/
