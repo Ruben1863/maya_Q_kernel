@@ -34,7 +34,7 @@
 #define PK_DBG_NONE(fmt, arg...)    do {} while (0)
 #define PK_DBG_FUNC(fmt, arg...)    pr_debug(PFX fmt, ##arg)
 
-/*#define DEBUG_CAMERA_HW_K*/
+#define DEBUG_CAMERA_HW_K
 #ifdef DEBUG_CAMERA_HW_K
 #define PK_DBG PK_DBG_FUNC
 #define PK_ERR(fmt, arg...)   pr_err(fmt, ##arg)
@@ -144,7 +144,7 @@ int mtkcam_gpio_init(struct platform_device *pdev)
 		ret = PTR_ERR(cam_ldo0_l);
 		pr_debug("%s : pinctrl err, cam_ldo0_l\n", __func__);
 	}
-	/* Vanzo:yuntaohe on: Mon, 21 Dec 2015 21:56:27 +0800
+/* Vanzo:yuntaohe on: Mon, 21 Dec 2015 21:56:27 +0800
  */
     /*sub caemra Vcama ldo*/
 	cam_ldo1_h = pinctrl_lookup_state(camctrl, "cam_ldo1_1");
@@ -152,7 +152,6 @@ int mtkcam_gpio_init(struct platform_device *pdev)
 		ret = PTR_ERR(cam_ldo1_h);
 		pr_debug("%s : pinctrl err, cam_ldo1_h\n", __func__);
 	}
-
 	cam_ldo1_l = pinctrl_lookup_state(camctrl, "cam_ldo1_0");
 	if (IS_ERR(cam_ldo1_l)) {
 		ret = PTR_ERR(cam_ldo1_l);
@@ -164,7 +163,6 @@ int mtkcam_gpio_init(struct platform_device *pdev)
 		ret = PTR_ERR(vcm_pnd_h);
 		pr_debug("%s : pinctrl err, vcm_pnd_h\n", __func__);
 	}
-
 	vcm_pnd_l = pinctrl_lookup_state(camctrl, "cam_vcm_pnd_0");
 	if (IS_ERR(vcm_pnd_l)) {
 		ret = PTR_ERR(vcm_pnd_l);
@@ -207,6 +205,16 @@ int mtkcam_gpio_set(int PinIdx, int PwrType, int Val)
 
 		break;
 	case CAMLDO:
+        if (IS_ERR(cam_ldo0_l)) {
+		    ret = PTR_ERR(cam_ldo0_l);
+		    pr_debug("%s : pinctrl err, cam_ldo0_l\n", __func__);    
+            break;
+	    }
+	    if (IS_ERR(cam_ldo0_h)) {
+		    ret = PTR_ERR(cam_ldo0_h);
+		    pr_debug("%s : pinctrl err, cam_ldo0_h\n", __func__);    
+            break;
+	    }
 		if (Val == 0)
 			pinctrl_select_state(camctrl, cam_ldo0_l);
 		else
