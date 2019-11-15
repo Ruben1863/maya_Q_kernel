@@ -112,7 +112,7 @@
 		is_batch_supported = <0>;
 	};
 
-	alsps@60 {
+	alsps@39 {
 		compatible = "mediatek,GP2AP030A00F";
 		i2c_num = <0x2>;
 		i2c_addr = <0x39 0x0 0x0 0x0>;

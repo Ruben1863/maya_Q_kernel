@@ -14,44 +14,35 @@
  *
  ****************************************************************************/
 //#define IMAGE_NORMAL_MIRROR 
+#ifdef VANZO_IMGSENSOR_GC5005_ROTATION
 #define IMAGE_H_MIRROR 
-//#define IMAGE_V_MIRROR 
+#else
+#define IMAGE_V_MIRROR 
+#endif
 //#define IMAGE_HV_MIRROR 
 
-#ifdef IMAGE_NORMAL
+#ifdef IMAGE_NORMAL_MIRROR
 #define MIRROR 		  0x54
-
-#define BinStartY	     0x02
-#define BinStartX      0x02
-#define FullStartY     0x05
-#define FullStartX     0x05
+#define STARTX 		  0x05
+#define STARTY 		  0x05
 #endif
 
 #ifdef IMAGE_H_MIRROR
 #define MIRROR 		  0x55
-
-#define BinStartY	  	 0x01
-#define BinStartX      0x02
-#define FullStartY     0x03
-#define FullStartX     0x04
+#define STARTX 		  0x04
+#define STARTY 		  0x03
 #endif
 
 #ifdef IMAGE_V_MIRROR
 #define MIRROR 		  0x56
-
-#define BinStartY	     0x02
-#define BinStartX      0x02
-#define FullStartY     0x04
-#define FullStartX     0x05
+#define STARTX 		  0x05
+#define STARTY 		  0x04
 #endif
 
 #ifdef IMAGE_HV_MIRROR
 #define MIRROR  	  0x57
-
-#define BinStartY	     0x02
-#define BinStartX      0x02
-#define FullStartY     0x04
-#define FullStartX     0x04
+#define STARTX 		  0x04
+#define STARTY 		  0x04
 #endif
 #ifndef _GC5005MIPI_SENSOR_H
 #define _GC5005MIPI_SENSOR_H
@@ -158,4 +149,3 @@ extern int iWriteRegI2C(u8 *a_pSendData , u16 a_sizeSendData, u16 i2cId);
 extern int iWriteReg(u16 a_u2Addr , u32 a_u4Data , u32 a_u4Bytes , u16 i2cId); 
 
 #endif
-
