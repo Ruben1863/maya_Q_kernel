@@ -14,35 +14,44 @@
  *
  ****************************************************************************/
 //#define IMAGE_NORMAL_MIRROR 
-#ifdef VANZO_IMGSENSOR_GC5005_ROTATION
 #define IMAGE_H_MIRROR 
-#else
-#define IMAGE_V_MIRROR 
-#endif
+//#define IMAGE_V_MIRROR 
 //#define IMAGE_HV_MIRROR 
 
-#ifdef IMAGE_NORMAL_MIRROR
+#ifdef IMAGE_NORMAL
 #define MIRROR 		  0x54
-#define STARTX 		  0x05
-#define STARTY 		  0x05
+
+#define BinStartY	     0x02
+#define BinStartX      0x02
+#define FullStartY     0x05
+#define FullStartX     0x05
 #endif
 
 #ifdef IMAGE_H_MIRROR
 #define MIRROR 		  0x55
-#define STARTX 		  0x04
-#define STARTY 		  0x03
+
+#define BinStartY	  	 0x01
+#define BinStartX      0x02
+#define FullStartY     0x03
+#define FullStartX     0x04
 #endif
 
 #ifdef IMAGE_V_MIRROR
 #define MIRROR 		  0x56
-#define STARTX 		  0x05
-#define STARTY 		  0x04
+
+#define BinStartY	     0x02
+#define BinStartX      0x02
+#define FullStartY     0x04
+#define FullStartX     0x05
 #endif
 
 #ifdef IMAGE_HV_MIRROR
 #define MIRROR  	  0x57
-#define STARTX 		  0x04
-#define STARTY 		  0x04
+
+#define BinStartY	     0x02
+#define BinStartX      0x02
+#define FullStartY     0x04
+#define FullStartX     0x04
 #endif
 #ifndef _GC5005MIPI_SENSOR_H
 #define _GC5005MIPI_SENSOR_H
